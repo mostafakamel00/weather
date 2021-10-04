@@ -9,19 +9,25 @@ import { environment as env } from 'src/environments/environment.prod';
 export class WeatherService {
   private myApi = env.apiWeather;
   constructor(private http: HttpClient) {}
-  shbinApi(): Observable<any> {
+
+  alexApi(): Observable<any> {
     return this.http.get(
-      `${this.myApi}/current?access_key=cecd43861197da91dd35ee75b6816390&query=shebin`
+      `${this.myApi}/current?access_key=cecd43861197da91dd35ee75b6816390&query=alex`
     );
   }
-  cairoApi(): Observable<any> {
+  ismailiaApi(): Observable<any> {
     return this.http.get(
       `${this.myApi}/current?access_key=8b5704d814da5ed7041b385c9070f9b9&query=Ismailia`
     );
   }
-  alexApi(): Observable<any> {
+  // alexApi(): Observable<any> {
+  //   return this.http.get(
+  //     `${this.myApi}/current?access_key=0c157dea69cc388d9a2460b93d64c73f&query=alex`
+  //   );
+  // }
+  myLocCity(latitude: number, longitude: number): Observable<any> {
     return this.http.get(
-      `${this.myApi}/current?access_key=0c157dea69cc388d9a2460b93d64c73f&query=alex`
+      `${this.myApi}/current?access_key=0c157dea69cc388d9a2460b93d64c73f&query=${latitude} , ${longitude}`
     );
   }
 }

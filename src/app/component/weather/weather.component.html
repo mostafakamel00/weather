@@ -1,85 +1,88 @@
-<div
-  id="carouselExampleDark"
-  class="carousel carousel-dark slide weather-body"
-  data-bs-ride="carousel"
->
-  <ng-container *ngIf="current.is_day == 'yes'; else nightContent">
-    <div class="sun">
-      <i class="fas fa-sun fa-5x"></i>
-    </div>
-  </ng-container>
-  <ng-template #nightContent>
-    <div class="moon">
-      <i class="fas fa-moon fa-5x"></i>
-    </div>
-  </ng-template>
+<ng-container *ngIf="!!location && !!current && !!currentAx">
+  <div
+    id="carouselExampleDark"
+    class="carousel carousel-dark slide weather-body"
+    data-bs-ride="carousel"
+  >
+    <ng-container *ngIf="current.is_day == 'yes'; else nightContent">
+      <div class="sun">
+        <i class="fas fa-sun fa-5x"></i>
+      </div>
+    </ng-container>
+    <ng-template #nightContent>
+      <div class="moon">
+        <i class="fas fa-moon fa-5x"></i>
+      </div>
+    </ng-template>
 
-  <div class="cloud text-center">
-    <i class="fas fa-cloud fa-5x"></i>
-  </div>
-  <!----------------------start div of next and prev buttons---------------------->
-  <div class="carousel-indicators">
-    <button
-      type="button"
-      data-bs-target="#carouselExampleDark"
-      data-bs-slide-to="0"
-      class="active"
-      aria-current="true"
-      aria-label="Slide 1"
-    ></button>
-    <button
-      type="button"
-      data-bs-target="#carouselExampleDark"
-      data-bs-slide-to="1"
-      aria-label="Slide 2"
-    ></button>
-    <button
-      type="button"
-      data-bs-target="#carouselExampleDark"
-      data-bs-slide-to="2"
-      aria-label="Slide 3"
-    ></button>
-  </div>
-  <!----------------------end div of next and prev buttons---------------------->
-  <!----------------------div of content weather --------------------------->
-  <div class="carousel-inner text-center">
-    <!---------------start content shbin elkom----------------------->
-    <div class="carousel-item active title" data-bs-interval="10000">
-      <h1>
-        {{ location.name }}
-      </h1>
-      <h2>{{ current.temperature }}°</h2>
-      <h3>{{ current.humidity }}° / {{ current.wind_speed }}°</h3>
-      <h4>Feels Like : {{ current.feelslike }}</h4>
-      <h5>Humidity : {{ current.humidity }}%</h5>
-      <p>weather : {{ current.weather_descriptions }}</p>
+    <div class="cloud text-center">
+      <i class="fas fa-cloud fa-5x"></i>
     </div>
-    <!---------------end content shbin elkom----------------------->
-    <!---------------start content cairo----------------------->
-    <div class="carousel-item title" data-bs-interval="2000">
-      <h1>
-        {{ locationCa.name }}
-      </h1>
-      <h2>{{ currentCa.temperature }}°</h2>
-      <h3>{{ currentCa.humidity }}° / {{ current.wind_speed }}°</h3>
-      <h4>Feels Like : {{ currentCa.feelslike }}</h4>
-      <h5>Humidity : {{ currentCa.humidity }}%</h5>
-      <p>weather : {{ currentCa.weather_descriptions }}</p>
+    <!----------------------start div of next and prev buttons---------------------->
+    <div class="carousel-indicators">
+      <button
+        type="button"
+        data-bs-target="#carouselExampleDark"
+        data-bs-slide-to="0"
+        class="active"
+        aria-current="true"
+        aria-label="Slide 1"
+      ></button>
+      <button
+        type="button"
+        data-bs-target="#carouselExampleDark"
+        data-bs-slide-to="1"
+        aria-label="Slide 2"
+      ></button>
+      <button
+        type="button"
+        data-bs-target="#carouselExampleDark"
+        data-bs-slide-to="2"
+        aria-label="Slide 3"
+      ></button>
     </div>
-    <!---------------end content cairo----------------------->
-    <!---------------start content alex----------------------->
-    <div class="carousel-item title">
-      <h1>
-        {{ locationAx.name }}
-      </h1>
-      <h2>{{ currentAx.temperature }}°</h2>
-      <h3>{{ currentAx.humidity }}° / {{ current.wind_speed }}°</h3>
-      <h4>Feels Like : {{ currentAx.feelslike }}</h4>
-      <h5>Humidity : {{ currentAx.humidity }}%</h5>
-      <p>weather : {{ currentAx.weather_descriptions }}</p>
+    <!----------------------end div of next and prev buttons---------------------->
+
+    <!----------------------div of content weather --------------------------->
+    <div class="carousel-inner text-center">
+      <!---------------start content with my Location----------------------->
+      <div class="carousel-item active title" data-bs-interval="10000">
+        <h1>
+          {{ location?.name }} <span class="location">'your location'</span>
+        </h1>
+        <h2>{{ current.temperature }}°</h2>
+        <h3>{{ current.humidity }}° / {{ current.wind_speed }}°</h3>
+        <h4>Feels Like : {{ current.feelslike }}</h4>
+        <h5>Humidity : {{ current.humidity }}%</h5>
+        <p>weather : {{ current.weather_descriptions }}</p>
+      </div>
+      <!---------------end content with my Location----------------------->
+
+      <!---------------start content Ismailia----------------------->
+      <div class="carousel-item title" data-bs-interval="2000">
+        <h1>{{ locationIs?.name }}</h1>
+        <h2>{{ currentIs.temperature }}°</h2>
+        <h3>{{ currentIs.humidity }}° / {{ current.wind_speed }}°</h3>
+        <h4>Feels Like : {{ currentIs.feelslike }}</h4>
+        <h5>Humidity : {{ currentIs.humidity }}%</h5>
+        <p>weather : {{ currentIs.weather_descriptions }}</p>
+      </div>
+      <!---------------end content Ismailia----------------------->
+
+      <!---------------start content alex----------------------->
+      <div class="carousel-item title">
+        <h1>
+          {{ locationAx?.name }}
+        </h1>
+        <h2>{{ currentAx.temperature }}°</h2>
+        <h3>{{ currentAx.humidity }}° / {{ current.wind_speed }}°</h3>
+        <h4>Feels Like : {{ currentAx.feelslike }}</h4>
+        <h5>Humidity : {{ currentAx.humidity }}%</h5>
+        <p>weather : {{ currentAx.weather_descriptions }}</p>
+      </div>
+      <!---------------end content alex----------------------->
     </div>
-    <!---------------end content alex----------------------->
+    <!----------------------div of content weather --------------------------->
+    <span class="date">{{ location.localtime | date: "MMM d, y" }}</span>
   </div>
-  <!----------------------div of content weather --------------------------->
-  <span>{{ location.localtime | date: "MMM d, y" }}</span>
-</div>
+</ng-container>
