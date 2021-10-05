@@ -40,7 +40,7 @@ export class WeatherComponent implements OnInit {
   }
   getWeatherIsmailia() {
     this.api.ismailiaApi().subscribe((res) => {
-      console.log(res);
+      // console.log(res);
       this.currentIs = res.current;
       this.locationIs = res.location;
     });
